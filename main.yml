@@ -17,8 +17,7 @@
   hosts: all
   # gather_facts: false # remove later! speeds up testing
   become: true
-  vars_files:
-    - ./vars.yml
+  
 
   tasks:
   - name: enable repos
@@ -29,8 +28,10 @@
 
 - name: deploy haproxy
   hosts: frontends
-  gather_facts: false # remove later! speeds up testing
+  # gather_facts: false # remove later! speeds up testing
   become: true
+  vars_files:
+    - ./vars.yml
 
   tasks:
   - name: http
